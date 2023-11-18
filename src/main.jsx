@@ -7,17 +7,17 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 
 // react router
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { check } from "./store/ProfilSlice";
 
 store.dispatch(check());
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <BrowserRouter>
+        <HashRouter>
             <Provider store={store}>
                 <App />
             </Provider>
-        </BrowserRouter>
+        </HashRouter>
     </React.StrictMode>
 );
