@@ -1,0 +1,246 @@
+{
+  "users": [
+    {
+      "username": "amine",
+      "password": "1234",
+      "groupId": "1",
+      "id": 26
+    },
+    {
+      "username": "amine",
+      "password": "1234",
+      "groupId": "1",
+      "id": 27
+    },
+    {
+      "username": "amine",
+      "password": "1234",
+      "groupId": "1",
+      "id": 28
+    },
+    {
+      "username": "amine",
+      "password": "1234",
+      "groupId": "1",
+      "id": 30
+    },
+    {
+      "id": 31,
+      "groupId": "1",
+      "img": "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U",
+      "username": "amineEi",
+      "password": "1234"
+    },
+    {
+      "id": 32,
+      "groupId": "1",
+      "img": "",
+      "username": "amine",
+      "password": "12345"
+    },
+    {
+      "username": "amine",
+      "password": "user",
+      "groupId": "0",
+      "id": 33
+    },
+    {
+      "id": 35,
+      "groupId": "1",
+      "username": "amineA",
+      "password": "admin"
+    },
+    {
+      "username": "ahmed",
+      "password": "user",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqHqVr-CbHrt6TbZXYpaO7TR1weVwUFpOoK7EWtnNG&s",
+      "groupId": "0",
+      "id": 36
+    },
+    {
+      "username": "ahmed",
+      "password": "user",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqHqVr-CbHrt6TbZXYpaO7TR1weVwUFpOoK7EWtnNG&s",
+      "groupId": "0",
+      "id": 37
+    },
+    {
+      "username": "amine",
+      "password": "amine",
+      "groupId": 0,
+      "id": 38
+    },
+    {
+      "username": "amine",
+      "password": "user",
+      "groupId": 0,
+      "id": 39
+    },
+    {
+      "username": "ahmed",
+      "password": "1234a",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqHqVr-CbHrt6TbZXYpaO7TR1weVwUFpOoK7EWtnNG&s",
+      "groupId": "0",
+      "id": 40
+    },
+    {
+      "username": "ahmed",
+      "password": "1234a",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqHqVr-CbHrt6TbZXYpaO7TR1weVwUFpOoK7EWtnNG&s",
+      "groupId": "0",
+      "id": 41
+    }
+  ],
+  "posts": [
+    {
+      "title": "Games",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqHqVr-CbHrt6TbZXYpaO7TR1weVwUFpOoK7EWtnNG&s",
+      "userId": 32,
+      "category": "Back End,UI/UX,Front End",
+      "description": "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati voluptates facere itaque blanditiis ipsa possimus! Iusto voluptatum deleniti, reiciendis, quas aliquid quam omnis labore, numquam voluptatem animi dolor fuga culpa?\n",
+      "time": "2023-11-17T11:12:41.521Z",
+      "likes": 0,
+      "id": 1
+    },
+    {
+      "title": "Games",
+      "img": "",
+      "userId": 32,
+      "category": "",
+      "description": "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati voluptates facere itaque blanditiis ipsa possimus! Iusto voluptatum deleniti, reiciendis, quas aliquid quam omnis labore, numquam voluptatem animi dolor fuga culpa?\n",
+      "time": "2023-11-17T19:55:36.438Z",
+      "likes": 0,
+      "id": 2
+    },
+    {
+      "title": "Games",
+      "img": "",
+      "userId": 32,
+      "category": "",
+      "description": "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati voluptates facere itaque blanditiis ipsa possimus! Iusto voluptatum deleniti, reiciendis, quas aliquid quam omnis labore, numquam voluptatem animi dolor fuga culpa?\n",
+      "time": "2023-11-17T19:55:44.474Z",
+      "likes": 0,
+      "id": 3
+    },
+    {
+      "title": "Games",
+      "img": "",
+      "userId": 32,
+      "category": "",
+      "description": "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati voluptates facere itaque blanditiis ipsa possimus! Iusto voluptatum deleniti, reiciendis, quas aliquid quam omnis labore, numquam voluptatem animi dolor fuga culpa?\n",
+      "time": "2023-11-17T19:55:44.474Z",
+      "likes": 0,
+      "id": 4
+    },
+    {
+      "title": "Games",
+      "img": "",
+      "userId": 32,
+      "category": "",
+      "description": "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati voluptates facere itaque blanditiis ipsa possimus! Iusto voluptatum deleniti, reiciendis, quas aliquid quam omnis labore, numquam voluptatem animi dolor fuga culpa?\n",
+      "time": "2023-11-17T19:55:44.474Z",
+      "likes": 0,
+      "id": 5
+    },
+    {
+      "title": "Games",
+      "img": "",
+      "userId": 32,
+      "category": "",
+      "description": "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati voluptates facere itaque blanditiis ipsa possimus! Iusto voluptatum deleniti, reiciendis, quas aliquid quam omnis labore, numquam voluptatem animi dolor fuga culpa?\n",
+      "time": "2023-11-17T19:55:44.474Z",
+      "likes": 0,
+      "id": 6
+    },
+    {
+      "title": "Games",
+      "img": "",
+      "userId": 32,
+      "category": "",
+      "description": "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati voluptates facere itaque blanditiis ipsa possimus! Iusto voluptatum deleniti, reiciendis, quas aliquid quam omnis labore, numquam voluptatem animi dolor fuga culpa?\n",
+      "time": "2023-11-17T19:55:44.474Z",
+      "likes": 0,
+      "id": 7
+    },
+    {
+      "title": "Games",
+      "img": "",
+      "userId": 32,
+      "category": "",
+      "description": "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati voluptates facere itaque blanditiis ipsa possimus! Iusto voluptatum deleniti, reiciendis, quas aliquid quam omnis labore, numquam voluptatem animi dolor fuga culpa?\n",
+      "time": "2023-11-17T19:55:44.474Z",
+      "likes": 0,
+      "id": 8
+    },
+    {
+      "title": "Games",
+      "img": "",
+      "userId": 32,
+      "category": "",
+      "description": "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati voluptates facere itaque blanditiis ipsa possimus! Iusto voluptatum deleniti, reiciendis, quas aliquid quam omnis labore, numquam voluptatem animi dolor fuga culpa?\n",
+      "time": "2023-11-17T19:55:44.474Z",
+      "likes": 0,
+      "id": 9
+    },
+    {
+      "title": "Games",
+      "img": "",
+      "userId": 32,
+      "category": "",
+      "description": "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati voluptates facere itaque blanditiis ipsa possimus! Iusto voluptatum deleniti, reiciendis, quas aliquid quam omnis labore, numquam voluptatem animi dolor fuga culpa?\n",
+      "time": "2023-11-17T19:55:44.474Z",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "title": "Games",
+      "img": "",
+      "userId": 32,
+      "category": "",
+      "description": "    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati voluptates facere itaque blanditiis ipsa possimus! Iusto voluptatum deleniti, reiciendis, quas aliquid quam omnis labore, numquam voluptatem animi dolor fuga culpa?\n",
+      "time": "2023-11-17T19:55:44.474Z",
+      "likes": 0,
+      "id": 11
+    },
+    {
+      "title": "",
+      "img": "",
+      "userId": 32,
+      "category": "UI/UX",
+      "description": "",
+      "time": "2023-11-17T20:37:27.378Z",
+      "likes": 0,
+      "id": 12
+    },
+    {
+      "title": "",
+      "img": "",
+      "userId": 32,
+      "category": "UI/UX,Back End",
+      "description": "",
+      "time": "2023-11-17T20:59:57.020Z",
+      "likes": 0,
+      "id": 13
+    },
+    {
+      "title": "",
+      "img": "",
+      "userId": 32,
+      "category": "Back End,Front End,UI/UX",
+      "description": "",
+      "time": "2023-11-17T22:05:49.877Z",
+      "likes": 0,
+      "id": 14
+    },
+    {
+      "title": "",
+      "img": "",
+      "userId": 32,
+      "category": "",
+      "description": "",
+      "time": "2023-11-17T22:11:19.240Z",
+      "likes": 0,
+      "id": 15
+    }
+  ]
+}
