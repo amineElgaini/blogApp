@@ -45,39 +45,62 @@ function SignIn() {
     };
     const dispatch = useDispatch();
     return (
-        <div className="flex flex-col items-center gap-6">
-            <div className="grid w-full max-w-sm items-center gap-1.5">
-                <Label htmlFor="username">UserName</Label>
-                <Input
-                    ref={username}
-                    type="text"
-                    id="username"
-                    placeholder="Username"
-                />
-                {error.username ? (
-                    <small className="text-red-500">{error.username}</small>
-                ) : <small className="invisible ">placeholder</small>}
-            </div>
-            <div className="grid w-full max-w-sm items-center gap-1.5">
-                <Label htmlFor="password">Password</Label>
-                <Input
-                    ref={password}
-                    type="text"
-                    id="password"
-                    placeholder="Password"
-                />
-                {error.password ? (
-                    <small className="text-red-500">{error.password}</small>
-                ) : <small className="invisible ">placeholder</small>}
-            </div>
+        <>
+            <h2 className="text-3xl text-center mb-4">Sign In</h2>
 
-            <div className="grid w-full max-w-sm">
-                <Button className="ms-auto" onClick={submitForm}>
-                    Submit
-                </Button>
-            </div>
-            <Link to={'/blogApp/login'}>Login</Link>
-        </div>
+            <form onSubmit={(e) => e.preventDefault}>
+                <div className="flex flex-col items-center gap-6">
+                    <div className="grid w-full max-w-sm items-center gap-1.5">
+                        <Label htmlFor="username">UserName</Label>
+                        <Input
+                            ref={username}
+                            type="text"
+                            id="username"
+                            placeholder="Username"
+                            autoFocus
+                        />
+                        {error.username ? (
+                            <small className="text-red-500">
+                                {error.username}
+                            </small>
+                        ) : (
+                            <small className="invisible ">placeholder</small>
+                        )}
+                    </div>
+                    <div className="grid w-full max-w-sm items-center gap-1.5">
+                        <Label htmlFor="password">Password</Label>
+                        <Input
+                            ref={password}
+                            type="text"
+                            id="password"
+                            placeholder="Password"
+                        />
+                        {error.password ? (
+                            <small className="text-red-500">
+                                {error.password}
+                            </small>
+                        ) : (
+                            <small className="invisible ">placeholder</small>
+                        )}
+                    </div>
+
+                    <div className="grid w-full max-w-sm">
+                        <Button
+                            className="ms-auto focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                            onClick={submitForm}
+                        >
+                            Submit
+                        </Button>
+                    </div>
+                    <Link
+                        to={"/blogApp/login"}
+                        className="text-blue-500 border-b-2 border-blue-500"
+                    >
+                        Login
+                    </Link>
+                </div>
+            </form>
+        </>
     );
 }
 

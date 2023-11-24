@@ -110,6 +110,13 @@ const authSlice = createSlice({
         builder.addCase(editPost.fulfilled, (state, action) => {
         });
         builder.addCase(deletePost.fulfilled, (state, action) => {
+            state.userPosts = state.userPosts.filter((e)=>{
+                console.log(e.id, action.meta.arg.id)
+                if (e.id === action.meta.arg.id) {
+                    return false;
+                }
+                return true;
+            });
         });
     },
 });

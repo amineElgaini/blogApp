@@ -47,12 +47,14 @@ const EditPost = () => {
                 },
             })
         );
-        navigate(-1);
+        navigate("/blogApp/profile");
     };
     useEffect(() => {
         axios
             .get(
-                `${import.meta.env.VITE_REACT_API_URL}/posts?id=${params.id}&userId=${user.userInfo.id}`
+                `${import.meta.env.VITE_REACT_API_URL}/posts?id=${
+                    params.id
+                }&userId=${user.userInfo.id}`
             )
             .then((response) => {
                 return response.data[0];
@@ -66,7 +68,7 @@ const EditPost = () => {
             })
             .catch(() => {
                 navigate("/");
-            })
+            });
     }, []);
 
     return (
@@ -75,7 +77,9 @@ const EditPost = () => {
                 <section className="mx-auto max-w-2xl">
                     <h2 className="text-center text-4xl font-bold mb-10">
                         Edit Post{" "}
-                        <span className="text-blue-500">[{post.title || 'Unkown Title'}]</span>
+                        <span className="text-blue-500">
+                            [{post.title || "Unkown Title"}]
+                        </span>
                     </h2>
                     <form
                         onSubmit={(e) => e.preventDefault()}
@@ -178,14 +182,15 @@ const EditPost = () => {
                         </Button>
                         <Button
                             variant={"destructive"}
-                            onClick={() =>
+                            onClick={() => {
                                 dispatch(
                                     deletePost({
                                         id: post.id,
                                         userId: user.userInfo.id,
                                     })
-                                )
-                            }
+                                );
+                                navigate("/blogApp/profile");
+                            }}
                         >
                             Delete Post
                         </Button>

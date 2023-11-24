@@ -37,7 +37,7 @@ function App() {
                 <Navbar />
                 <Routes>
                     <Route path="blogApp/" element={<Home />} />
-                    <Route path="*" element={"page not found"} />
+                    <Route path="*" element={<Home />} />
                     <Route element={<Layout />}>
                         <Route path="blogApp/author/:id" element={<Author />} />
 

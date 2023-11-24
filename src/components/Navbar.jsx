@@ -19,22 +19,24 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-    const user = useSelector((state) => state.auth);
     const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth);
+    console.log(user.userInfo?.groupId)
 
     const filterNavigation = navigation.filter((e) => {
         if (
             user.userInfo?.groupId != 1 &&
-            ["usersDashboard", "postsDashboard"].includes(e.href)
+            ["usersDashboard", "postsDashboard"].includes(e.href.split('/')[2])
         ) {
             return false;
         }
         return true;
     });
+
     const location = useLocation();
-    const page = location.pathname.split("/")[1];
+    const page = location.pathname.split("/")[2];
     const filterNavigationWithCurrentPage = filterNavigation.map((e) => {
-        if (page === e.href) {
+        if (page === e.href.split('/')[2]) {
             return { ...e, current: true };
         }
         return { ...e, current: false };

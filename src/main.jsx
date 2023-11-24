@@ -8,9 +8,7 @@ import store from "./store/store";
 
 // react router
 import { HashRouter } from "react-router-dom";
-import { check } from "./store/ProfilSlice";
 
-// store.dispatch(check());
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>

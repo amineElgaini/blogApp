@@ -62,7 +62,7 @@ function Post() {
 
             {post.loading === true ? "loading..." : ""}
 
-            {post.posts.length > 0 ? (
+            {post.posts.length > 0 && (
                 <div className="flex justify-center items-center flex-wrap gap-4">
                     {post.posts.map((post) => (
                         <Link
@@ -107,8 +107,11 @@ function Post() {
                         </Link>
                     ))}
                 </div>
-            ) : (
-                <h2 className="mt-10 text-gray-400 text-2xl text-center">No Post Is Found</h2>
+            )}
+            {post.posts.length === 0 && post.loading === false && (
+                <h2 className="mt-10 text-gray-400 text-2xl text-center">
+                    No Post Is Found
+                </h2>
             )}
         </>
     );

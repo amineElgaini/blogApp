@@ -33,7 +33,8 @@ function UsersDashboard() {
                 })
             );
         }
-        if (location.state) {
+        if (location.state && firstRender) {
+            setPagination(1);
             setSearchByUserId(location.state.id);
         }
         if (firstRender) {
