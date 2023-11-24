@@ -10,7 +10,7 @@ const initialState = {
     error: "",
 };
 
-const USER_URL = "https://blogappserver-bna3.onrender.com/users";
+const USER_URL = `${import.meta.env.VITE_REACT_API_URL}/users`;
 
 export const fetchUsers = createAsyncThunk("user/fetchUsers", (payload) => {
     return axios
@@ -21,15 +21,12 @@ export const fetchUsers = createAsyncThunk("user/fetchUsers", (payload) => {
             },
         })
         .then((response) => {
-            const linkHeader =
-                response.headers.get("Link") === ""
-                    ? null
-                    : response.headers.get("Link").split("_page=");
+            const linkHeader = response.headers.get("Link")?.split("_page=");
 
             const data = {
                 response: response.data,
                 paginationInterval:
-                    linkHeader !== null
+                    linkHeader !== undefined
                         ? [
                               linkHeader[1][0],
                               linkHeader[linkHeader.length - 1][0],

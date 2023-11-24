@@ -52,7 +52,7 @@ const EditPost = () => {
     useEffect(() => {
         axios
             .get(
-                `https://blogappserver-bna3.onrender.com/posts?id=${params.id}&userId=${user.userInfo.id}`
+                `${import.meta.env.VITE_REACT_API_URL}/posts?id=${params.id}&userId=${user.userInfo.id}`
             )
             .then((response) => {
                 return response.data[0];
@@ -65,7 +65,7 @@ const EditPost = () => {
                 setCategories(response.category);
             })
             .catch(() => {
-                navigate("/home");
+                navigate("/");
             })
     }, []);
 

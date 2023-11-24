@@ -109,7 +109,7 @@ function PostView() {
                 {/* Show Render Table */}
                 {post.loading && <TableRender />}
 
-                {post.posts.length > 0 && <PostTable />}
+                {post.posts.length > 0 ? <PostTable /> : <h2 className="mt-10 text-gray-400 text-2xl text-center">No Post Is Found</h2>}
             </main>
         </>
     );

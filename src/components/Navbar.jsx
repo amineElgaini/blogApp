@@ -8,7 +8,7 @@ import { logout } from "@/store/ProfilSlice";
 import { ModeToggle } from "./mode-toggle";
 
 const navigation = [
-    { name: "Home", href: "/blogApp/home", current: false },
+    { name: "Home", href: "/blogApp", current: false },
     { name: "Post", href: "/blogApp/post", current: false },
     { name: "UsersDashboard", href: "/blogApp/usersDashboard", current: false },
     { name: "PostsDashboard", href: "/blogApp/postsDashboard", current: false },
@@ -70,7 +70,7 @@ export default function Navbar() {
                                 <div className="flex flex-shrink-0 items-center">
                                     <img
                                         className="h-8 w-auto"
-                                        src="http://localhost:5173/src/assets/logo.png"
+                                        src="https://blogs.sussex.ac.uk/tel/files/2017/05/Blog-Icon-Green-background-version.png"
                                         alt="Your Company"
                                     />
                                 </div>
@@ -101,19 +101,6 @@ export default function Navbar() {
                                 </div>
                             </div>
                             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                                {/* <button
-                                    type="button"
-                                    className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                                >
-                                    <span className="absolute -inset-1.5" />
-                                    <span className="sr-only">
-                                        View notifications
-                                    </span>
-                                    <BellIcon
-                                        className="h-6 w-6"
-                                        aria-hidden="true"
-                                    />
-                                </button> */}
                                 <span className="mx-2">
                                     <ModeToggle />
                                 </span>
@@ -132,7 +119,7 @@ export default function Navbar() {
                                                     src={
                                                         user.userInfo.img
                                                             ? user.userInfo.img
-                                                            : "https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg"
+                                                            : "https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg"
                                                     }
                                                     alt=""
                                                 />
@@ -163,21 +150,6 @@ export default function Navbar() {
                                                         </Link>
                                                     )}
                                                 </Menu.Item>
-                                                {/* <Menu.Item>
-                                                {({ active }) => (
-                                                    <Link
-                                                        to="profile"
-                                                        className={classNames(
-                                                            active
-                                                                ? "bg-gray-100"
-                                                                : "",
-                                                            "block px-4 py-2 text-sm text-gray-700"
-                                                        )}
-                                                    >
-                                                        Settings
-                                                    </Link>
-                                                )}
-                                            </Menu.Item> */}
                                                 <Menu.Item>
                                                     {({ active }) => (
                                                         <span

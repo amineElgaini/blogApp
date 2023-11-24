@@ -10,7 +10,7 @@ function Auth({ groupId = [-1], children }) {
         return children;
     }
 
-    return <Navigate to={"/home"} />;
+    return <Navigate to={"/blogApp"} />;
 }
 
 export default Auth;

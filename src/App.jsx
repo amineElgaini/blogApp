@@ -16,14 +16,27 @@ import Post from "./features/seePost/ViewPost";
 import Navbar from "./components/Navbar";
 import CreatePost from "./features/profile/CreatePost";
 import EditPost from "./features/profile/EditPost";
+import { useDispatch } from "react-redux";
+import { fetchUser } from "./store/ProfilSlice";
 
 function App() {
+    const dispatch = useDispatch();
+    let user = localStorage.getItem("user");
+    if (user) {
+        user = JSON.parse(user);
+        dispatch(
+            fetchUser({
+                username: user.username,
+                password: user.password,
+            })
+        );
+    }
     return (
         <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
             <div className="App min-h-screen">
                 <Navbar />
                 <Routes>
-                    <Route path="blogApp/home" element={<Home />} />
+                    <Route path="blogApp/" element={<Home />} />
                     <Route path="*" element={"page not found"} />
                     <Route element={<Layout />}>
                         <Route path="blogApp/author/:id" element={<Author />} />

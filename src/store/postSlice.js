@@ -1,8 +1,7 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { deleteUser } from "./userSlice";
 
-const POST_URL = "https://blogappserver-bna3.onrender.com/posts";
+const POST_URL = `${import.meta.env.VITE_REACT_API_URL}/posts`;
 
 const initialState = {
     loading: false,
@@ -23,15 +22,12 @@ export const fetchPosts = createAsyncThunk("posts/fetchPosts", (payload) => {
             },
         })
         .then((response) => {
-            const linkHeader =
-                response.headers.get("Link") === ""
-                    ? null
-                    : response.headers.get("Link").split("_page=");
+            const linkHeader = response.headers.get("Link")?.split("_page=");
 
             const data = {
                 response: response.data,
                 paginationInterval:
-                    linkHeader !== null
+                    linkHeader !== undefined
                         ? [
                               linkHeader[1][0],
                               linkHeader[linkHeader.length - 1][0],
@@ -103,7 +99,7 @@ const postSlice = createSlice({
             state.loading = true;
             state.error = "";
         });
-        builder.addCase(addPost.fulfilled, (state, action) => {
+        builder.addCase(addPost.fulfilled, (state) => {
             state.loading = false;
             state.error = "";
         });

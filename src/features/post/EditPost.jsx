@@ -50,13 +50,13 @@ const EditPostForm = () => {
                     },
                 })
             );
-            navigate("/postsDashboard");
+            navigate("/blogApp/postsDashboard");
         }
     };
 
     useEffect(() => {
         axios
-            .get(`https://blogappserver-bna3.onrender.com/posts?id=${params.id}`)
+            .get(`${import.meta.env.VITE_REACT_API_URL}/posts?id=${params.id}`)
             .then((response) => {
                 return response.data[0];
             })

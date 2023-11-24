@@ -1,40 +1,32 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const POST_URL = "https://blogappserver-bna3.onrender.com/posts";
+const POST_URL = `${import.meta.env.VITE_REACT_API_URL}/posts`;
 
 const initialState = {
     loading: false,
     posts: [],
     pagination: [1, 1],
     currentPagination: 1,
-    search: { title: undefined, category: undefined },
+    search: { title: undefined },
     error: "",
 };
 
 export const fetchPosts = createAsyncThunk("postView/fetchPosts", (payload) => {
-    //send category filtred
-    if (payload.category) {
-        payload.category = payload.category.split(",").sort().join(",");
-    }
     return axios
         .get(`${POST_URL}`, {
             params: {
                 _page: payload.pagination,
                 q: payload.title,
-                category_like: payload.category,
             },
         })
         .then((response) => {
-            const linkHeader =
-                response.headers.get("Link") === ""
-                    ? null
-                    : response.headers.get("Link").split("_page=");
+            const linkHeader = response.headers.get("Link")?.split("_page=");
 
             const data = {
                 response: response.data,
                 paginationInterval:
-                    linkHeader !== null
+                    linkHeader !== undefined
                         ? [
                               linkHeader[1][0],
                               linkHeader[linkHeader.length - 1][0],
@@ -43,7 +35,6 @@ export const fetchPosts = createAsyncThunk("postView/fetchPosts", (payload) => {
                 pagination: payload.pagination,
                 search: {
                     title: payload.title,
-                    category: payload.category,
                 },
             };
             return data;

@@ -1,5 +1,6 @@
 import {
     Dialog,
+    DialogClose,
     DialogContent,
     DialogDescription,
     DialogFooter,
@@ -12,7 +13,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 import { Button } from "@/components/ui/button";
-import { DialogClose } from "@radix-ui/react-dialog";
 
 import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -25,6 +25,7 @@ function AddUser() {
     const groupId = useRef("");
     const img = useRef("");
     const [error, setError] = useState({});
+    const [userIsAdded, setUserIsAdded] = useState(false);
 
     const validation = (username, password, groupId) => {
         let errors = {};
@@ -55,6 +56,7 @@ function AddUser() {
                     groupId: valueGroupId,
                 })
             );
+            setUserIsAdded(true);
         }
         setError(errors);
     };
@@ -69,12 +71,15 @@ function AddUser() {
                 <DialogHeader>
                     <DialogTitle>Add User</DialogTitle>
                     <DialogDescription>
-                        Add a new user here. Click save when you're done.
+                        Add a new user here. Click save when you are done.
                     </DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
                     <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="pt-2 self-start text-right">
+                        <Label
+                            htmlFor="username"
+                            className="pt-2 self-start text-right"
+                        >
                             Username
                         </Label>
                         <div className="col-span-3">
@@ -93,7 +98,10 @@ function AddUser() {
                         </div>
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="password" className="pt-2 self-start text-right">
+                        <Label
+                            htmlFor="password"
+                            className="pt-2 self-start text-right"
+                        >
                             Password
                         </Label>
                         <div className="col-span-3">
@@ -113,7 +121,10 @@ function AddUser() {
                         </div>
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="img" className="pt-2 self-start text-right">
+                        <Label
+                            htmlFor="img"
+                            className="pt-2 self-start text-right"
+                        >
                             Image
                         </Label>
                         <div className="col-span-3">
@@ -156,15 +167,41 @@ function AddUser() {
                     </div>
                 </div>
                 <DialogFooter>
-                    {/* <DialogClose> */}
-                    <Button
-                        className="ms-auto"
-                        type="submit"
-                        onClick={handleSubmit}
-                    >
-                        Add User
-                    </Button>
-                    {/* </DialogClose> */}
+                    <div className="flex items-center">
+                        {userIsAdded && (
+                            <span className="flex gap-2 text-green-400">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className="w-6 h-6"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                                <p>user Is Added</p>
+                            </span>
+                        )}
+                        <div className="ms-auto">
+                            <DialogClose asChild className="mr-4">
+                                <Button type="button" variant="secondary">
+                                    Close
+                                </Button>
+                            </DialogClose>
+                            <Button
+                                type="submit"
+                                onClick={handleSubmit}
+                                disabled={userIsAdded}
+                            >
+                                Add User
+                            </Button>
+                        </div>
+                    </div>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

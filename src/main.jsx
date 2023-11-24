@@ -10,7 +10,7 @@ import store from "./store/store";
 import { HashRouter } from "react-router-dom";
 import { check } from "./store/ProfilSlice";
 
-store.dispatch(check());
+// store.dispatch(check());
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>

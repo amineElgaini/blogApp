@@ -12,7 +12,7 @@ function Login() {
     const auth = useSelector((state) => state.auth);
 
     if (auth.userInfo?.id) {
-        return <Navigate to={"/profile"} replace={true} />;
+        return <Navigate to={"/blogApp/profile"} replace={true} />;
     }
 
     const submitForm = () => {

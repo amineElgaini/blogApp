@@ -9,7 +9,7 @@ function PostDetails() {
 
     useEffect(() => {
         axios
-            .get(`https://blogappserver-bna3.onrender.com/posts?id=${params.id}`)
+            .get(`${import.meta.env.VITE_REACT_API_URL}/posts?id=${params.id}`)
             .then((response) => {
                 return response.data[0];
             })
@@ -50,7 +50,7 @@ function PostDetails() {
                     ) : (
                         <img
                             className="rounded-full mx-auto mb-10"
-                            src={`http://localhost:5173/src/assets/blog.jpg`}
+                            src={`https://www.searchenginejournal.com/wp-content/uploads/2020/08/7-ways-a-blog-can-help-your-business-right-now-5f3c06b9eb24e-1280x720.png`}
                             alt=""
                         />
                     )}

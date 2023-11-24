@@ -1,21 +1,8 @@
-import { Button } from "@/components/ui/button";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import TimeAgo from "../features/post/component/TimeAgo";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 function PostCard({ post }) {
-    const users = useSelector((state) => state.user);
-    const author = users.users.find((user) => user.id == post.userId);
     return (
         <>
             <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
@@ -25,7 +12,7 @@ function PostCard({ post }) {
                         src={
                             post.img
                                 ? post.img
-                                : "http://localhost:5173/src/assets/blog.jpg"
+                                : "https://www.searchenginejournal.com/wp-content/uploads/2020/08/7-ways-a-blog-can-help-your-business-right-now-5f3c06b9eb24e-1280x720.png"
                         }
                         alt=""
                     />
@@ -54,7 +41,7 @@ function PostCard({ post }) {
                     </div>
                     <div className="flex gap-4 justify-between">
                         <Link
-                            to={`/post/read/${post.id}`}
+                            to={`/blogApp/post/read/${post.id}`}
                             className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                         >
                             Read more
@@ -75,7 +62,7 @@ function PostCard({ post }) {
                             </svg>
                         </Link>
                         <Link
-                            to={`/profile/editPost/${post.id}`}
+                            to={`/blogApp/profile/editPost/${post.id}`}
                             className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                             Edit

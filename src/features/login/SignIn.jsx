@@ -38,7 +38,7 @@ function SignIn() {
                     groupId: 0,
                 })
             );
-            navigate("/login");
+            navigate("/blogApp/login");
         } else {
             setError(errors);
         }

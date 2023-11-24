@@ -21,6 +21,7 @@ function UpdateUser({ user }) {
     const username = useRef(user.username);
     const password = useRef(user.password);
     const img = useRef(user.img);
+    const [userIsUpdated, setUserIsUpdated] = useState(false);
 
     const [error, setError] = useState({});
 
@@ -52,6 +53,7 @@ function UpdateUser({ user }) {
                     },
                 })
             );
+            setUserIsUpdated(true);
         }
         setError(errors);
     };
@@ -125,6 +127,7 @@ function UpdateUser({ user }) {
                                 defaultValue={user.img}
                                 ref={img}
                             />
+                            <small className="invisible">placeholder</small>
                         </div>
                     </div>
                     <div className="grid grid-cols-4 items-center gap-4">
@@ -153,9 +156,41 @@ function UpdateUser({ user }) {
                     </div>
                 </div>
                 <DialogFooter>
-                    <Button type="submit" onClick={handleSubmit}>
-                        Save Changes
-                    </Button>
+                <div className="flex justify-between gap-2 items-center">
+                        {userIsUpdated && (
+                            <span className="flex gap-2 text-green-400">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className="w-6 h-6"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                                <p>user Is Updated</p>
+                            </span>
+                        )}
+                        <div className="ms-auto">
+                            <DialogClose asChild className='mr-4'>
+                                <Button type="button" variant="secondary">
+                                    Close
+                                </Button>
+                            </DialogClose>
+                            <Button
+                                type="submit"
+                                onClick={handleSubmit}
+                                disabled={userIsUpdated}
+                            >
+                                Add User
+                            </Button>
+                        </div>
+                    </div>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

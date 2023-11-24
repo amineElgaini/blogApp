@@ -15,7 +15,7 @@ function Home() {
                     className="w-screen object-cover"
                     style={{ height: "calc(100vh - 70px)" }}
                     alt="err"
-                    src={"http://localhost:5173/src/assets/blog.jpg"}
+                    src={"https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
                 />
             </div>
         </>

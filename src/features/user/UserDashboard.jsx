@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import TableRender from "@/components/table-render";
 import { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
@@ -89,7 +88,7 @@ function UsersDashboard() {
                 {/* Show Render Table */}
                 {user.loading && <TableRender />}
 
-                {user.users.length > 0 && <UserTable />}
+                {user.users.length > 0 ? <UserTable /> : <h2 className="mt-10 text-gray-400 text-2xl text-center">No User Is Found</h2>}
             </main>
         </>
     );
