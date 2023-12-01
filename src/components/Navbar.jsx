@@ -8,7 +8,7 @@ import { logout } from "@/store/ProfilSlice";
 import { ModeToggle } from "./mode-toggle";
 
 const navigation = [
-    { name: "Home", href: "/blogApp", current: false },
+    { name: "Home", href: "/blogApp/home", current: false },
     { name: "Post", href: "/blogApp/post", current: false },
     { name: "UsersDashboard", href: "/blogApp/usersDashboard", current: false },
     { name: "PostsDashboard", href: "/blogApp/postsDashboard", current: false },
@@ -21,7 +21,6 @@ function classNames(...classes) {
 export default function Navbar() {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth);
-    console.log(user.userInfo?.groupId)
 
     const filterNavigation = navigation.filter((e) => {
         if (
@@ -47,7 +46,7 @@ export default function Navbar() {
             {({ open }) => (
                 <>
                     <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-                        <div className="relative flex h-16 items-center justify-between">
+                        <div className="relative flex h-[60px] items-center justify-between">
                             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                                 {/* Mobile menu button*/}
                                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">

@@ -1,4 +1,3 @@
-import { ThemeProvider } from "@/components/theme-provider";
 import { Route, Routes } from "react-router";
 import UsersDashboard from "./features/user/UserDashboard";
 import PostView from "@/features/post/PostDashboard";
@@ -32,101 +31,100 @@ function App() {
         );
     }
     return (
-        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-            <div className="App min-h-screen">
-                <Navbar />
-                <Routes>
-                    <Route path="blogApp/" element={<Home />} />
-                    <Route path="*" element={<Home />} />
-                    <Route element={<Layout />}>
-                        <Route path="blogApp/author/:id" element={<Author />} />
+        <div className="App min-h-screen">
+            <Navbar />
+            <Routes>
+                <Route path="blogApp/home" element={<Home />} />
+                <Route path="*" element={<Home />} />
+                <Route element={<Layout />}>
+                    <Route path="blogApp/author/:id" element={<Author />} />
 
-                        <Route path="blogApp/profile">
-                            <Route
-                                index
-                                element={
-                                    <Auth groupId={[0, 1]}>
-                                        <Profile />
-                                    </Auth>
-                                }
-                            />
-                            <Route
-                                path={"createPost"}
-                                element={
-                                    <Auth groupId={[0, 1]}>
-                                        <CreatePost />
-                                    </Auth>
-                                }
-                            />
-                            <Route
-                                path={"editPost/:id"}
-                                element={
-                                    <Auth groupId={[0, 1]}>
-                                        <EditPost />
-                                    </Auth>
-                                }
-                            />
-                        </Route>
-
+                    <Route path="blogApp/profile">
                         <Route
-                            path="blogApp/login"
+                            index
                             element={
-                                <Auth groupId={[-1]}>
-                                    <Login />
+                                <Auth groupId={[0, 1]}>
+                                    <Profile />
                                 </Auth>
                             }
                         />
                         <Route
-                            path="blogApp/signIn"
+                            path={"createPost"}
                             element={
-                                <Auth groupId={[-1]}>
-                                    <SignIn />
+                                <Auth groupId={[0, 1]}>
+                                    <CreatePost />
                                 </Auth>
                             }
                         />
                         <Route
-                            path="blogApp/usersDashboard"
+                            path={"editPost/:id"}
+                            element={
+                                <Auth groupId={[0, 1]}>
+                                    <EditPost />
+                                </Auth>
+                            }
+                        />
+                    </Route>
+
+                    <Route
+                        path="blogApp/login"
+                        element={
+                            <Auth groupId={[-1]}>
+                                <Login />
+                            </Auth>
+                        }
+                    />
+                    <Route
+                        path="blogApp/signIn"
+                        element={
+                            <Auth groupId={[-1]}>
+                                <SignIn />
+                            </Auth>
+                        }
+                    />
+                    <Route
+                        path="blogApp/usersDashboard"
+                        element={
+                            <Auth groupId={[1]}>
+                                <UsersDashboard />
+                            </Auth>
+                        }
+                    />
+
+                    <Route path="blogApp/postsDashboard">
+                        <Route
+                            index
                             element={
                                 <Auth groupId={[1]}>
-                                    <UsersDashboard />
+                                    <PostView />
                                 </Auth>
                             }
                         />
-
-                        <Route path="blogApp/postsDashboard">
-                            <Route
-                                index
-                                element={
-                                    <Auth groupId={[1]}>
-                                        <PostView />
-                                    </Auth>
-                                }
-                            />
-                            <Route
-                                path="add"
-                                element={
-                                    <Auth groupId={[1]}>
-                                        <AddPostForm />
-                                    </Auth>
-                                }
-                            />
-                            <Route
-                                path="edit/:id"
-                                element={
-                                    <Auth groupId={[1]}>
-                                        <EditPostForm />
-                                    </Auth>
-                                }
-                            />
-                        </Route>
-                        <Route path="blogApp/post">
-                            <Route index element={<Post />} />
-                            <Route path="read/:id" element={<PostDetails />} />
-                        </Route>
+                        <Route
+                            path="add"
+                            element={
+                                <Auth groupId={[1]}>
+                                    <AddPostForm />
+                                </Auth>
+                            }
+                        />
+                        <Route
+                            path="edit/:id"
+                            element={
+                                <Auth groupId={[1]}>
+                                    <EditPostForm />
+                                </Auth>
+                            }
+                        />
                     </Route>
-                </Routes>
-            </div>
-        </ThemeProvider>
+                    <Route path="blogApp/post">
+                        <Route index element={<Post />} />
+                        <Route path="read/:id" element={<PostDetails />} />
+                    </Route>
+                </Route>
+                <Route path="*" element={"err page not found"} />
+            </Routes>
+        </div>
     );
 }
 

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteUser, fetchUserPosts, logout } from "../../store/ProfilSlice";
 import PostCard from "@/components/PostCard";
 import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Profile() {
     const dispatch = useDispatch();

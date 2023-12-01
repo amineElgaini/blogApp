@@ -3,11 +3,12 @@ import {
     DialogClose,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
+
+import axios from "axios";
 
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -20,12 +21,14 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../../../store/userSlice";
 
 function AddUser() {
+    const dispatch = useDispatch();
     const username = useRef("");
     const password = useRef("");
     const groupId = useRef("");
     const img = useRef("");
     const [error, setError] = useState({});
     const [userIsAdded, setUserIsAdded] = useState(false);
+    const [userIsExist, setUserIsExist] = useState(false);
 
     const validation = (username, password, groupId) => {
         let errors = {};
@@ -48,20 +51,35 @@ function AddUser() {
         const valueGroupId = groupId.current.value.trim();
         const errors = validation(valueUsername, valuePassword, valueGroupId);
         if (Object.keys(errors).length === 0) {
-            dispatch(
-                addUser({
-                    username: valueUsername,
-                    password: valuePassword,
-                    img: valueImg,
-                    groupId: valueGroupId,
+            axios
+                .get(`${import.meta.env.VITE_REACT_API_URL}/users`, {
+                    params: {
+                        username: valueUsername,
+                    },
                 })
-            );
-            setUserIsAdded(true);
+                .then((response) => {
+                    if (response.data.length === 0) {
+                        dispatch(
+                            addUser({
+                                username: valueUsername,
+                                password: valuePassword,
+                                img: valueImg,
+                                groupId: valueGroupId,
+                            })
+                        );
+                        setUserIsExist(false);
+                        setUserIsAdded(true);
+                    } else {
+                        setUserIsExist(true);
+                    }
+                });
         }
         setError(errors);
     };
 
-    const dispatch = useDispatch();
+    const handleClose = () => {
+        setUserIsAdded(false);
+    };
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -153,6 +171,7 @@ function AddUser() {
                         <div className="col-span-3">
                             <Input
                                 id="groupId"
+                                type="number"
                                 placeholder="0 for user, 1 for admin"
                                 ref={groupId}
                             />
@@ -165,44 +184,53 @@ function AddUser() {
                             )}
                         </div>
                     </div>
-                </div>
-                <DialogFooter>
-                    <div className="flex items-center">
-                        {userIsAdded && (
-                            <span className="flex gap-2 text-green-400">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="w-6 h-6"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                    />
-                                </svg>
-                                <p>user Is Added</p>
-                            </span>
-                        )}
-                        <div className="ms-auto">
-                            <DialogClose asChild className="mr-4">
-                                <Button type="button" variant="secondary">
-                                    Close
-                                </Button>
-                            </DialogClose>
-                            <Button
-                                type="submit"
-                                onClick={handleSubmit}
-                                disabled={userIsAdded}
-                            >
-                                Add User
-                            </Button>
+                    {userIsExist ? (
+                        <div className="text-red-500 text-center">
+                            Username already exist
                         </div>
+                    ) : (
+                        ""
+                    )}
+                </div>
+                <div className="flex gap-4 flex-wrap-reverse justify-between items-center">
+                    {userIsAdded && (
+                        <span className="flex gap-2 text-green-400">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-6 h-6"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+                            <p>user Is Added</p>
+                        </span>
+                    )}
+                    <div className="ms-auto">
+                        <DialogClose
+                            onClick={handleClose}
+                            asChild
+                            className="mr-4"
+                        >
+                            <Button type="button" variant="secondary">
+                                Close
+                            </Button>
+                        </DialogClose>
+                        <Button
+                            type="submit"
+                            onClick={handleSubmit}
+                            disabled={userIsAdded}
+                        >
+                            Add User
+                        </Button>
                     </div>
-                </DialogFooter>
+                </div>
             </DialogContent>
         </Dialog>
     );

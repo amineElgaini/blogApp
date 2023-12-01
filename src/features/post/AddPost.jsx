@@ -6,11 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Textarea } from "@/components/ui/textarea";
 import { addPost } from "../../store/postSlice";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import axios from "axios";
 
 const AddPostForm = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const post = useSelector((state) => state.post);
+    // const post = useSelector((state) => state.post);
     const [searchParams, setSearchParams] = useSearchParams({
         title: "",
         img: "",
@@ -30,6 +31,20 @@ const AddPostForm = () => {
             .split(",")
             .filter((e) => e !== "")
     );
+    const [userIsExist, setUserIsExist] = useState(true);
+    const [error, setError] = useState([{}]);
+
+    const validation = (title, description) => {
+        let errors = {};
+        if (title.length < 4) {
+            errors.title = "Title Should Be Greater Than 4 Caracters";
+        }
+        if (description.length < 20) {
+            errors.description =
+                "Description Should Be Greater Than 20 Caracters";
+        }
+        return errors;
+    };
 
     const onTitleChanged = (e) => {
         setSearchParams((p) => {
@@ -79,20 +94,35 @@ const AddPostForm = () => {
     };
 
     const onSavePostClicked = () => {
-        if (author > 0) {
-            dispatch(
-                addPost({
-                    values: {
-                        title,
-                        img,
-                        userId: parseInt(author),
-                        category: categories,
-                        description,
+        const errors = validation(title, description);
+        if (author > 0 && Object.keys(errors).length === 0) {
+            axios
+                .get(`${import.meta.env.VITE_REACT_API_URL}/users`, {
+                    params: {
+                        id: parseInt(author),
                     },
                 })
-            );
-            navigate("/postsDashboard");
+                .then((response) => {
+                    if (response.data.length !== 0) {
+                        dispatch(
+                            addPost({
+                                values: {
+                                    title,
+                                    img,
+                                    userId: parseInt(author),
+                                    category: categories,
+                                    description,
+                                },
+                            })
+                        );
+                        setUserIsExist(true);
+                        navigate("/blogApp/postsDashboard");
+                    } else {
+                        setUserIsExist(false);
+                    }
+                });
         }
+        setError(errors);
     };
 
     return (
@@ -110,6 +140,11 @@ const AddPostForm = () => {
                         value={title}
                         onChange={onTitleChanged}
                     />
+                    {error.title ? (
+                        <small className="text-red-500">{error.title}</small>
+                    ) : (
+                        <small className="invisible">placeholder</small>
+                    )}
                 </div>
 
                 <div className="grid w-full max-w-sm items-center gap-1.5">
@@ -127,10 +162,16 @@ const AddPostForm = () => {
                     <Label htmlFor="author">Author</Label>
                     <Input
                         id="author"
+                        type="number"
                         placeholder="UserID"
                         defaultValue={author}
                         onChange={(e) => onAuthorChanged(e)}
                     />
+                    {/* {error.username ? (
+                        <small className="text-red-500">{error.username}</small>
+                    ) : (
+                        <small className="invisible">placeholder</small>
+                    )} */}
                 </div>
 
                 <div className="grid w-full gap-1.5">
@@ -208,7 +249,20 @@ const AddPostForm = () => {
                     <p className="text-sm text-muted-foreground">
                         write a nice description.
                     </p>
+                    {error.description ? (
+                        <small className="text-red-500">{error.description}</small>
+                    ) : (
+                        <small className="invisible">placeholder</small>
+                    )}
                 </div>
+
+                {!userIsExist ? (
+                    <div className="text-red-500 text-center">
+                        User Is Not Exist
+                    </div>
+                ) : (
+                    ""
+                )}
 
                 <Button type="button" onClick={onSavePostClicked}>
                     Save Post

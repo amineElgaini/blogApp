@@ -40,7 +40,7 @@ function PostDetails() {
                 </Button>
             </Link>
             {post ? (
-                <>
+                < div className='m-4'>
                     {post.img ? (
                         <img
                             className="rounded-full mx-auto mb-10"
@@ -61,7 +61,7 @@ function PostDetails() {
                     <div className="leading-7 text-lg font-mono">
                         {post.description}
                     </div>
-                </>
+                </div>
             ) : (
                 ""
             )}

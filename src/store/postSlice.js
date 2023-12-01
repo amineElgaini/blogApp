@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {getPaginationFromHeader} from "./functions"
 
 const POST_URL = `${import.meta.env.VITE_REACT_API_URL}/posts`;
 
@@ -12,27 +13,23 @@ const initialState = {
     error: "",
 };
 
+
+
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", (payload) => {
     return axios
-        .get(`${POST_URL}`, {
-            params: {
-                _page: payload.pagination,
-                id: payload.searchByPostIdValue,
-                userId: payload.searchByUserIdValue,
-            },
-        })
-        .then((response) => {
-            const linkHeader = response.headers.get("Link")?.split("_page=");
-
+    .get(`${POST_URL}`, {
+        params: {
+            _page: payload.pagination,
+            id: payload.searchByPostIdValue,
+            userId: payload.searchByUserIdValue,
+        },
+    })
+    .then((response) => {
             const data = {
                 response: response.data,
-                paginationInterval:
-                    linkHeader !== undefined
-                        ? [
-                              linkHeader[1][0],
-                              linkHeader[linkHeader.length - 1][0],
-                          ]
-                        : [1, 1],
+                paginationInterval: getPaginationFromHeader(
+                    response.headers.get("Link")
+                ),
                 pagination: payload.pagination,
                 search: {
                     postId: payload.searchByPostIdValue,

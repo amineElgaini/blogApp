@@ -3,7 +3,6 @@ import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
@@ -57,7 +56,9 @@ function UpdateUser({ user }) {
         }
         setError(errors);
     };
-
+    const handleClose = () =>{
+        setUserIsUpdated(false);
+    };
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -155,8 +156,8 @@ function UpdateUser({ user }) {
                         </div>
                     </div>
                 </div>
-                <DialogFooter>
-                <div className="flex justify-between gap-2 items-center">
+                <div className="flex gap-4 flex-wrap-reverse justify-between items-center">
+
                         {userIsUpdated && (
                             <span className="flex gap-2 text-green-400">
                                 <svg
@@ -177,7 +178,7 @@ function UpdateUser({ user }) {
                             </span>
                         )}
                         <div className="ms-auto">
-                            <DialogClose asChild className='mr-4'>
+                            <DialogClose onClick={handleClose} asChild className='mr-4'>
                                 <Button type="button" variant="secondary">
                                     Close
                                 </Button>
@@ -191,7 +192,6 @@ function UpdateUser({ user }) {
                             </Button>
                         </div>
                     </div>
-                </DialogFooter>
             </DialogContent>
         </Dialog>
     );

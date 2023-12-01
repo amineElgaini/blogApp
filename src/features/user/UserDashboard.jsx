@@ -7,7 +7,7 @@ import { Label } from "@radix-ui/react-label";
 import PaginationControl from "../../components/PaginationControl";
 import { fetchUsers } from "../../store/userSlice";
 import UserTable from "./component/UserTable";
-import AddUser from "./component/addUser";
+import AddUser from "./component/AddUser";
 
 function UsersDashboard() {
     const user = useSelector((state) => state.user);
@@ -46,8 +46,7 @@ function UsersDashboard() {
         <>
             <main>
                 <div className="flex gap-2 items-center justify-between">
-                    {/* <Button>Create User</Button> */}
-                    <AddUser />
+                    <AddUser refresh={{refresh:1}} />
                 </div>
 
                 {/* Show Error Table */}
