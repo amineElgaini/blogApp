@@ -25,7 +25,7 @@ export default function Navbar() {
     const filterNavigation = navigation.filter((e) => {
         if (
             user.userInfo?.groupId != 1 &&
-            ["usersDashboard", "postsDashboard"].includes(e.href.split('/')[2])
+            ["usersDashboard", "postsDashboard"].includes(e.href.split("/")[2])
         ) {
             return false;
         }
@@ -35,7 +35,7 @@ export default function Navbar() {
     const location = useLocation();
     const page = location.pathname.split("/")[2];
     const filterNavigationWithCurrentPage = filterNavigation.map((e) => {
-        if (page === e.href.split('/')[2]) {
+        if (page === e.href.split("/")[2]) {
             return { ...e, current: true };
         }
         return { ...e, current: false };
@@ -71,7 +71,7 @@ export default function Navbar() {
                                 <div className="flex flex-shrink-0 items-center">
                                     <img
                                         className="h-8 w-auto"
-                                        src="https://blogs.sussex.ac.uk/tel/files/2017/05/Blog-Icon-Green-background-version.png"
+                                        src="https://cdn-icons-png.flaticon.com/512/3145/3145765.png"
                                         alt="Your Company"
                                     />
                                 </div>

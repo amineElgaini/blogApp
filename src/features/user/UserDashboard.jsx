@@ -23,7 +23,7 @@ function UsersDashboard() {
     // stop fetching if store is full
     useEffect(() => {
         const searchByUserIdValue =
-            searchByUserId === "" ? undefined : searchByUserId;
+            searchByUserId === "" ? undefined : +searchByUserId;
 
         if (!firstRender || user.users.length === 0) {
             dispatch(
@@ -61,7 +61,7 @@ function UsersDashboard() {
                             <Label>UserId:</Label>
                             <Input
                                 id="searchId"
-                                type="text"
+                                type="number"
                                 placeholder="UserId"
                                 className="max-w-[100px]"
                                 value={searchByUserId}

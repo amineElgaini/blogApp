@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import {getPaginationFromHeader} from "./functions"
+import { getPaginationFromHeader } from "./functions";
 
 const initialState = {
     loading: false,
@@ -14,6 +14,7 @@ const initialState = {
 const USER_URL = `${import.meta.env.VITE_REACT_API_URL}/users`;
 
 export const fetchUsers = createAsyncThunk("user/fetchUsers", (payload) => {
+    console.log(payload);
     return axios
         .get(`${USER_URL}`, {
             params: {
@@ -22,7 +23,8 @@ export const fetchUsers = createAsyncThunk("user/fetchUsers", (payload) => {
             },
         })
         .then((response) => {
-
+            console.log("x");
+            console.log(response.headers.get("Link"));
             const data = {
                 response: response.data,
                 paginationInterval: getPaginationFromHeader(
@@ -33,6 +35,8 @@ export const fetchUsers = createAsyncThunk("user/fetchUsers", (payload) => {
                     id: payload.searchByUserIdValue,
                 },
             };
+            console.log("y");
+            console.log(data);
             return data;
         });
 });
@@ -66,10 +70,10 @@ const userSlice = createSlice({
             state.loading = true;
         });
         builder.addCase(fetchUsers.fulfilled, (state, action) => {
+            console.log("hi");
             state.loading = false;
             state.error = "";
             state.users = action.payload.response;
-
             // i we reload the component he gonna save the search
             state.pagination = action.payload.paginationInterval;
             state.currentPagination = action.payload.pagination;
